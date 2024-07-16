@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Movies, { moviesData } from './components/Movies';
 import MovieSelector from './components/MovieSelector';
 //import RateMovieButton from './RateMovieButton';
-//import UploadButton from './UploadButton';
+import UploadButton from './components/UploadButton';
 import './App.css'; // Import the CSS file for styling
 
 const App = () => {
@@ -22,6 +22,7 @@ const App = () => {
         selectedMovie={selectedMovie}
         setSelectedMovie={setSelectedMovie}
       />
+      <UploadButton />
     </div>
   );
 };
