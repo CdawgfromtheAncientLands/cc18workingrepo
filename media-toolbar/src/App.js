@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Movies, { moviesData } from './components/Movies';
+import MovieSelector from './components/MovieSelector';
+//import RateMovieButton from './RateMovieButton';
+//import UploadButton from './UploadButton';
+import './App.css'; // Import the CSS file for styling
 
-function App() {
+const App = () => {
+  const [selectedMovie, setSelectedMovie] = useState(moviesData[0]);
+
+  const updateMovieRating = (title, newRating) => {
+    const movieIndex = moviesData.findIndex(movie => movie.title === title);
+    moviesData[movieIndex].rating = newRating;
+    setSelectedMovie({ ...moviesData[movieIndex] });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Movie App</h1>
+      <MovieSelector
+        movies={moviesData}
+        selectedMovie={selectedMovie}
+        setSelectedMovie={setSelectedMovie}
+      />
     </div>
   );
-}
+};
 
 export default App;
